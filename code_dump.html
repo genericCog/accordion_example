@@ -1,0 +1,66 @@
+    
+    
+    
+    
+            <button id="default_open"   class="tablinks" onclick="Open_Tab_RQ332(event, 'Open')">Open</button>
+        <button id="btn_complete"   class="tablinks" onclick="Open_Tab_RQ332(event, 'Complete')">Complete</button>
+        <button id="btn_cancelled"  class="tablinks" onclick="Open_Tab_RQ332(event, 'Cancelled')">Cancelled</button>
+        <button id="btn_inprogress" class="tablinks" onclick="Open_Tab_RQ332(event, 'In-progress')">In-progress</button>
+        <button id="btn_other"      class="tablinks" onclick="Open_Tab_RQ332(event, 'Other')">Other</button>
+        <button id="btn_all"        class="tablinks" onclick="Open_Tab_RQ332(event, 'All')">All</button>
+    
+    
+    
+    /*TAB controller__________*/
+    $('#tab_group_container .tablinks').on('click', function(ev){
+        var type_332 = '';
+        var t = ev.srcElement || ev.target;
+
+        
+        switch(this.id){
+            case( 'default_open' ):
+                type_332 = this.id;
+                break;
+            case( 'btn_complete' ):
+                type_332 = this.id;
+                break;
+            case( 'btn_cancelled' ):
+                type_332 = this.id;
+                break;
+            case( 'btn_inprogress' ):
+                type_332 = this.id;
+                break;
+            case( 'btn_other' ):
+                type_332 = this.id;
+                break;
+            case( 'btn_all' ):
+                type_332 = this.id;
+                break;
+            default:
+                console.log('ERROR:' + this.id + '\n' + t);
+            break;
+        }
+        
+        console.log('before function: '+t.id+" and "+$(t).attr('class'));
+        Open_Tab_RQ332(t.id, type_332);     
+    });//end on click event
+    
+        function Open_Tab_RQ332(evt, type_332) {
+            console.log('inside function: '+evt, type_332);
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(type_332).style.display = "block";
+            type_332.className += " active";
+            document.getElementById(type_332).className += " active";
+            console.log('inside function 2: '+ evt, +'\n'+ type_332.className);
+        }//END Open_Tab_RQ332()
+        
+       //document.getElementById("default_open").click();// Get the element with id="defaultOpen" and click on it
+    /*END TAB controller__________*/
